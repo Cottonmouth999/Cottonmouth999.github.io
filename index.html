@@ -5,13 +5,13 @@
 </head>
 <body>
  <h1>Hangman!</h1>
- <script>
   <h1>Hello world!</h1>
  <h3>My name is Connor</h3>
  <img id="map" width=800 height=800 src="Derp.jpg">
  <p>This if my first web page.</p>
   <p><a href="http://xkcd.com" title="xkcd: Land of geeky comics!">Click here</a> to read some excellent comics.</p>
    <h1>Play the Hangman game!</h1>
+ <script>
 
  var words = [
  "javascript",
@@ -27,7 +27,7 @@
  ];
  var word = words[Math.floor(Math.random() * words.length)];
  var answerArray = [];
- for (var i = 0; i < word.length; i++) {
+ for(var i = 0; i < word.length; i++) {
  answerArray[i] = "_";
  }
  var remainingLetters = word.length;
