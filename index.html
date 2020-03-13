@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Hangman!</title>
+ <title>ConnorIsAKid</title>
 </head>
 <body>
   <h1>Hello world!</h1>
@@ -10,45 +10,15 @@
  <img id="map" width=400 height=400 src="Derp.jpg">
  <p>This if my first web page.</p>
   <p><a href="http://xkcd.com" title="xkcd: Land of geeky comics!">Click here</a> to read some excellent comics.</p>
-   <h1>Play the Hangman game!</h1>
  <script>
 
- var words = [
- "javascript",
- "monkey",
- "amazing",
- "pancake",
- "dinosaur",
- "money",
- "ansis",
- "waldenwest",
- "hydroflasks",
- "supercalifragilisticexpialidocious",
- ];
- var word = words[Math.floor(Math.random() * words.length)];
- var answerArray = [];
- for (var i = 0; i < word.length; i++) {
- answerArray[i] = "_";
- }
- var remainingLetters = word.length;
- while (remainingLetters > 0) {
- alert(answerArray.join(" "));
- var guess = prompt("Guess a letter, or click Cancel to stop playing.");
- if (guess === null) {
- break;
- } else if (guess.length !== 1) {
- alert("Please enter a single letter.");
- } else {
- for (var j = 0; j < word.length; j++) {
- if (word[j] === guess) {
- answerArray[j] = guess;
- remainingLetters--;
- }
- }
- }
- }
- alert(answerArray.join(" "));
- alert("Good job! The answer was " + word);
+ var randomBodyParts = ["Face", "Nose", "Hair"];
+var randomAdjectives = ["Smelly", "Boring", "Stupid"];
+var randomWords = ["Fly", "Marmot", "Stick", "Monkey", "Rat"];
+var randomString = "Your " + pickRandomWord(randomBodyParts) + 
+" is like a " + pickRandomWord(randomAdjectives) + 
+" " + pickRandomWord(randomWords) + "!!!";
+randomString;
  </script>
 </body>
 </html>
