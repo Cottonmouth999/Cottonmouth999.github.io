@@ -23,6 +23,15 @@ var newHeadingText = prompt("Please provide a new heading:");
  var hobby = prompt("Tell me one of your hobbies!");
  $("body").append("<p>" + hobby + "</p>");
   var counter = 1;
+  var leftOffset = 0;
+ var moveHeading = function () {
+ $("#heading").offset({ left: leftOffset });
+ leftOffset++;
+ if (leftOffset > 200) {
+ leftOffset = 0;
+ }
+};
+ setInterval(moveHeading, 30);
 var printMessage = function () {
  console.log("You have been staring at your console for " + counter + " seconds");
  counter++;
