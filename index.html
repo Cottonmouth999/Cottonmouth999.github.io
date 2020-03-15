@@ -22,14 +22,11 @@ var newHeadingText = prompt("Please provide a new heading:");
  for (var i = 0; i < 1; i++) {
  var hobby = prompt("Tell me one of your hobbies!");
  $("body").append("<p>" + hobby + "</p>");
-  var counter = 1;
-  var leftOffset = 0;
- var moveHeading = function () {
- $("#heading").offset({ left: leftOffset });
- leftOffset++;
- if (leftOffset > 200) {
- leftOffset = 0;
- }
+  var clickHandler = function (event) {
+ console.log("These two numbers are the coordinates of where you pressed. " + event.pageX + " and " + event.pageY);
+};
+$("h1").click(clickHandler); </script>
+  
 };
  setInterval(moveHeading, 30);
 var printMessage = function () {
