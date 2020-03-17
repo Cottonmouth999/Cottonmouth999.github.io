@@ -26,9 +26,39 @@ Car.prototype.moveRight = function () {
  top: this.y
  });
 };
+ Car.prototype.moveLeft = function () {
+ this.x -= 5;
+ this.carElement.css({
+ left: this.x,
+ top: this.y
+ });
+};
+Car.prototype.moveUp = function () {
+ this.y -= 5;
+ this.carElement.css({
+ left: this.x,
+ top: this.y
+ });
+};
+Car.prototype.moveDown = function () {
+ this.y += 5;
+ this.carElement.css({
+ left: this.x,
+ top: this.y
+ });
+};
 tesla.moveRight();
 tesla.moveRight();
 tesla.moveRight();
+ tesla.moveLeft();
+tesla.moveLeft();
+tesla.moveLeft();
+ tesla.moveUp();
+tesla.moveUp();
+tesla.moveUp();
+ tesla.moveDown();
+tesla.moveDown();
+tesla.moveDown();
  </script>
 </body>
 </html>
