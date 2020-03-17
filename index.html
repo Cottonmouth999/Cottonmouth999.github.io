@@ -6,27 +6,28 @@
 <body>
  <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
  <script>
-Car.prototype.draw = function () {
-var carHtml = '<img src="http://nostarch.com/images/car.png">'; $("body").append(this.carElement);
-
-var tesla = new Car(20, 20);http://nostarch.com/images/car.png">';
+var Car = function (x, y) {
+ this.x = x;
+ this.y = y;
+};
+ Car.prototype.draw = function () {
+ var carHtml = '<img src="http://nostarch.com/images/car.png">';
  this.carElement = $(carHtml);
  this.carElement.css({
  position: "absolute",
  left: this.x,
  top: this.y
  });
-var nissan = new Car(100, 200);
-tesla.draw();
-nissan.draw();
-Car.prototype.moveRight = function () {
+ $("body").append(this.carElement);
+};
+  Car.prototype.moveRight = function () {
  this.x += 5;
  this.carElement.css({
  left: this.x,
  top: this.y
  });
 };
- Car.prototype.moveLeft = function () {
+  Car.prototype.moveLeft = function () {
  this.x -= 5;
  this.carElement.css({
  left: this.x,
@@ -47,18 +48,14 @@ Car.prototype.moveDown = function () {
  top: this.y
  });
 };
+  
+var tesla = new Car(20, 20);
+var nissan = new Car(100, 200);
+tesla.draw();
+nissan.draw();
+  tesla.moveRight();
 tesla.moveRight();
 tesla.moveRight();
-tesla.moveRight();
- tesla.moveLeft();
-tesla.moveLeft();
-tesla.moveLeft();
- tesla.moveUp();
-tesla.moveUp();
-tesla.moveUp();
- tesla.moveDown();
-tesla.moveDown();
-tesla.moveDown();
  </script>
 </body>
 </html>
