@@ -4,30 +4,32 @@
  <title>Canvas</title>
 </head>
 <body>
-  <img id="map" width=400 height=400 src="Derp.jpg">
- <p>Circles</p>
-<canvas id="canvas" width="200" height="200"></canvas>
- <script>
+<canvas id="canvas" width="400" height="400"></canvas>
+ <script>https://jsfiddle.net/#run
 var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d"); 
+var ctx = canvas.getContext("2d");
 var circle = function (x, y, radius, fillCircle) {
  ctx.beginPath();
- ctx.arc(x, y, radius, 0, fillCircle,  Math.PI * 2, false);
+ ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+ if (fillCircle) {
+ ctx.fill();
+ } else {
  ctx.stroke();
-}; 
-ctx.lineWidth = 4;
-ctx.strokeStyle = "Red";
-circle(100, 100, 10, true);
-ctx.strokeStyle = "Orange";
-circle(100, 100, 20, true);
-ctx.strokeStyle = "Yellow";
-circle(100, 100, 30, true);
-ctx.strokeStyle = "Green";
-circle(100, 100, 40, true);
-ctx.strokeStyle = "Blue";
-circle(100, 100, 50, true);
-ctx.strokeStyle = "Cyan";
-circle(100, 100, 40, true);
+ }
+ };
+ var drawBee = function (x, y) {
+ ctx.lineWidth = 2;
+ ctx.strokeStyle = "Black";
+ ctx.fillStyle = "Gold";
+
+ circle(x, y, 8, true);
+ circle(x, y, 8, false);
+ circle(x - 5, y - 11, 5, false);
+ circle(x + 5, y - 11, 5, false);
+ circle(x - 2, y - 1, 2, false);
+ circle(x + 2, y - 1, 2, false);
+};
+
 </script>
 </body>
 </html>
