@@ -34,11 +34,11 @@ var drawBee = function (x, y) {
 var update = function (coordinate) {
  var offset = Math.random() * 4 - 2;
  coordinate += offset;
- if (coordinate > 400) {
- coordinate = 400;
+ if (coordinate > 375) {
+ coordinate = 375;
  }
- if (coordinate < 0) {
- coordinate = 0;
+ if (coordinate < 25) {
+ coordinate = 25;
  }
  return coordinate;
 };
