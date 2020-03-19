@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Busy bee</title>
+ <title>Canvas Animation</title>
 </head>
 <body>
-<p>I AM A BEE</p>
- <canvas id="canvas" width="400" height="400"></canvas>
- <script>
+  <p>I AM A BEE</p>
+  <canvas id="canvas" width="400" height="400"></canvas>
+<script>
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var circle = function (x, y, radius, fillCircle) {
- ctx.beginPath();
- ctx.arc(x, y, radius, 0, Math.PI * 2, false);
- if (fillCircle) {
- ctx.fill();
- } 
- else {
- ctx.stroke();
- }
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+  if (fillCircle) {
+    ctx.fill();
+  } 
+  else {
+  ctx.stroke();
+  }
 }; 
 var drawBee = function (x, y) {
  ctx.lineWidth = 2;
@@ -30,48 +30,28 @@ var drawBee = function (x, y) {
  circle(x + 5, y - 11, 5, false);
  circle(x - 2, y - 1, 2, false);
  circle(x + 2, y - 1, 2, false);
-};
+ };
 
-var x = 25;
-var y = 25;
-var direction = "right";
+var update = function (coordinate) {
+  var offset = Math.random() * 4 - 2;
+  coordinate += offset;
+  if (coordinate > 400) {
+    coordinate = 400;
+  }
+  if (coordinate < 0) {
+    coordinate = 0;
+  }
+  return coordinate;
+}; 
+ 
+var x = 200;
+var y = 200;
 setInterval(function () {
 ctx.clearRect(0, 0, 400, 400);
- drawBee(x, y);
-
-
-if(direction == "right"){
-x = (x + 1);
-};
- if(direction == "down"){
-y = (y + 1);
-};
-if(direction == "left"){
-x = (x - 1);
-};
-if(direction == "up"){
-y = (y - 1);
-};
-
-
- if(x == 25 && y == 25){
- direction = "right";
- }
-if(x == 375 && y == 25){
- direction = "down";
- };
- if(x == 375 && y == 375){
- direction = "left";
- }
- if(x == 25 && y == 375){
- direction = "up";
- }
- 
- 
- 
- 
- 
-  ctx.strokeRect(0, 0, 400, 400);
+drawBee(x, y);
+x = update(x);
+y = update(y);
+ctx.strokeRect(0, 0, 400, 400);
 }, 1);
 
 
