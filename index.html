@@ -46,16 +46,49 @@ var update = function (coordinate) {
 var x = 100;
 var y = 100;
 setInterval(function () {
-ctx.clearRect(0, 0, 400, 200);
+ctx.clearRect(0, 0, 400, 400);
  drawBee(x, y);
 
  x = update(x);
  y = update(y);
   ctx.strokeRect(0, 0, 400, 400);
 }, 1);
+  var x = 25;
+var y = 25;
+var direction = "right";
+setInterval(function () {
+ctx.clearRect(0, 0, 400, 400);
+ drawBee(x, y);
+
+
+if(direction == "right"){
+x = (x + 1);
+};
+ if(direction == "down"){
+y = (y + 1);
+};
+if(direction == "left"){
+x = (x - 1);
+};
+if(direction == "up"){
+y = (y - 1);
+};
+
+
+ if(x == 25 && y == 25){
+ direction = "right";
+ }
+if(x == 375 && y == 25){
+ direction = "down";
+ };
+ if(x == 375 && y == 375){
+ direction = "left";
+ }
+ if(x == 25 && y == 375){
+ direction = "up";
+ }
 
 
     </script>
- <p>BZZz i need to poop</p>
 </body>
 </html>
