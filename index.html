@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Canvas</title>
+ <title>Canvas Animation</title>
 </head>
 <body>
-<canvas id="canvas" width="400" height="400"></canvas>
- <script>https://jsfiddle.net/#run
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+ <canvas id="canvas" width="200" height="200"></canvas>
+ <script>
 var circle = function (x, y, radius, fillCircle) {
  ctx.beginPath();
  ctx.arc(x, y, radius, 0, Math.PI * 2, false);
  if (fillCircle) {
  ctx.fill();
- } else {
+ } 
+ else {
  ctx.stroke();
  }
- };
- var drawBee = function (x, y) {
+}; 
+var drawBee = function (x, y) {
  ctx.lineWidth = 2;
  ctx.strokeStyle = "Black";
  ctx.fillStyle = "Gold";
@@ -29,7 +28,7 @@ var circle = function (x, y, radius, fillCircle) {
  circle(x - 2, y - 1, 2, false);
  circle(x + 2, y - 1, 2, false);
 };
-
-</script>
+     
+    </script>
 </body>
 </html>
