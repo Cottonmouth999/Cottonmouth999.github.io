@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Canvas Animation</title>
+ <title>Busy bee</title>
 </head>
 <body>
 <p>I AM A BEE</p>
@@ -31,29 +31,8 @@ var drawBee = function (x, y) {
  circle(x - 2, y - 1, 2, false);
  circle(x + 2, y - 1, 2, false);
 };
-var update = function (coordinate) {
- var offset = Math.random() * 4 - 2;
- coordinate += offset;
- if (coordinate > 390) {
- coordinate = 390;
- }
- if (coordinate < 10) {
- coordinate = 10;
- }
- return coordinate;
-};
 
-var x = 100;
-var y = 100;
-setInterval(function () {
-ctx.clearRect(0, 0, 400, 400);
- drawBee(x, y);
-
- x = update(x);
- y = update(y);
-  ctx.strokeRect(0, 0, 400, 400);
-}, 1);
-  var x = 25;
+var x = 25;
 var y = 25;
 var direction = "right";
 setInterval(function () {
@@ -87,6 +66,14 @@ if(x == 375 && y == 25){
  if(x == 25 && y == 375){
  direction = "up";
  }
+ 
+ 
+ 
+ 
+ 
+  ctx.strokeRect(0, 0, 400, 400);
+}, 1);
+
 
 
     </script>
