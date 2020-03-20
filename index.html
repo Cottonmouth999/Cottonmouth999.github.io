@@ -1,61 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>ITS A BEE RUN</title>
+ <title>Keyboard input</title>
 </head>
 <body>
-  <p>I AM A BEE</p>
-  <canvas id="canvas" width="400" height="400"></canvas>
-<script>
+ <canvas id="canvas" width="400" height="400"></canvas>
+ <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+ <h1>Use WASD to control ball and space to stop</h1>
+ <script>
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+var width = canvas.width;
+var height = canvas.height;
 var circle = function (x, y, radius, fillCircle) {
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, Math.PI * 2, false);
-  if (fillCircle) {
-    ctx.fill();
-  } 
-  else {
-  ctx.stroke();
-  }
-}; 
-var drawBee = function (x, y) {
- ctx.lineWidth = 2;
- ctx.strokeStyle = "Black";
- ctx.fillStyle = "Gold";
-
- circle(x, y, 8, true);
- circle(x, y, 8, false);
- circle(x - 5, y - 11, 5, false);
- circle(x + 5, y - 11, 5, false);
- circle(x - 2, y - 1, 2, false);
- circle(x + 2, y - 1, 2, false);
- };
-
-var update = function (coordinate) {
-  var offset = Math.random() * 4 - 2;
-  coordinate += offset;
-  if (coordinate > 400) {
-    coordinate = 400;
-  }
-  if (coordinate < 0) {
-    coordinate = 0;
-  }
-  return coordinate;
-}; 
- 
-var x = 200;
-var y = 200;
+ ctx.beginPath();
+ ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+ if (fillCircle) {
+ ctx.fill();
+ } else {
+ ctx.stroke();
+ }
+};
+var Ball = function () {
+ this.x = width / 2;
+ this.y = height / 2;
+ this.xSpeed = 5;
+ this.ySpeed = 0;
+};
+Ball.prototype.move = function () {
+ this.x += this.xSpeed;
+ this.y += this.ySpeed;
+ if (this.x < 0) {
+ this.x = width;
+ } else if (this.x > width) {
+ this.x = 0;
+ } else if (this.y < 0) {
+ this.y = height;
+ } else if (this.y > height) {
+ this.y = 0;
+ }
+};
+Ball.prototype.draw = function () {
+ circle(this.x, this.y, 10, true);
+};
+Ball.prototype.setDirection = function (direction) {
+ if (direction === "up") {
+ this.xSpeed = 0;
+ this.ySpeed = -5;
+ } else if (direction === "down") {
+ this.xSpeed = 0;
+ this.ySpeed = 5;
+ } else if (direction === "left") {
+ this.xSpeed = -5;
+ this.ySpeed = 0;
+ } else if (direction === "right") {
+ this.xSpeed = 5;
+ this.ySpeed = 0;
+ } else if (direction === "stop") {
+ this.xSpeed = 0;
+ this.ySpeed = 0;
+ }
+};
+var ball = new Ball();
+var keyActions = {
+ 32: "stop",
+ 65: "left",
+ 87: "up",
+ 68: "right",
+ 83: "down"
+};
+$("body").keydown(function (event) {
+ var direction = keyActions[event.keyCode];
+ ball.setDirection(direction);
+});
 setInterval(function () {
-ctx.clearRect(0, 0, 400, 400);
-drawBee(x, y);
-x = update(x);
-y = update(y);
-ctx.strokeRect(0, 0, 400, 400);
-}, 1);
-
-
-
-    </script>
+ ctx.clearRect(0, 0, width, height);
+ ball.draw();
+ ball.move();
+ ctx.strokeRect(0, 0, width, height);
+}, 10);
+</script>
 </body>
 </html>
