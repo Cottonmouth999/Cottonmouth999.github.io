@@ -27,7 +27,7 @@ var drawScore = function () {
  ctx.fillStyle = "Black";
  ctx.textAlign = "left";
  ctx.textBaseline = "top";
- ctx.fillText("Score: " + score, blockSize, blockSize);
+ ctx.fillText("Mouses You Have Ate: " + score, blockSize, blockSize);
 };
 var gameOver = function () {
  clearInterval(intervalId);
@@ -135,7 +135,7 @@ Snake.prototype.setDirection = function (newDirection) {
  this.position = new Block(10, 10);
 };
 Apple.prototype.draw = function () {
- this.position.drawCircle("LimeGreen");
+ this.position.drawCircle("Grey");
 };
 Apple.prototype.move = function () {
  var randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;
